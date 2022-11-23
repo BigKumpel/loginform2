@@ -14,5 +14,5 @@ class User {
         $this->lastName = "";
         global $db;
         $this->db = &$db;
-    }
-    
+    }    
+?>
