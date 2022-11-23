@@ -15,4 +15,4 @@ class User {
         global $db;
         $this->db = &$db;
     }
-?>
+    
