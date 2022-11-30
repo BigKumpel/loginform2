@@ -2,7 +2,7 @@
 strona główna <br>
 {{ message }}
 {% if authorized == true %}
-jesteś zalogowany
+jesteś zalogowany {{user.getName()}}
 {% endif %}
 
 {% include 'footer.html.twig' %}
