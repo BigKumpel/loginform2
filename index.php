@@ -40,6 +40,26 @@ Route::add('/login', function() {
     }
 }, 'post');
 
+Route::add('/profile', function() {
+    global $twig;
+    $user = $_SESSION['user'];
+    $fullName = $user->getName();
+    $fullName = explode(" ", $fullName);
+    $v = array( 'user' => $user, 'firstName' => $fullName[0], 'lastName' => $fullName[1]);
+    $twig->display('profile.html.twig', $v);
+});
+
+Route::add('/profile', function() {
+    global $twig;
+    if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])) {
+       $user = $_SESSION['user'];
+       $user->setFirstName($_REQUEST['firstName']);
+       $user->setLastName($_REQUEST['lastName']);
+       $user->save();
+       $twig->display('message.html.twig', ['message' => "Zapisano zmiany w profilu"]);
+    }
+}, "post");
+
 Route::add('/login', function() {
     echo "strona logowania";
 });
